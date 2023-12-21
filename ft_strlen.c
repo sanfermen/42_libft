@@ -6,9 +6,11 @@
 /*   By: sandrfer <sandrfer@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:38:41 by sandrfer          #+#    #+#             */
-/*   Updated: 2023/12/12 14:48:24 by sandrfer         ###   ########.fr       */
+/*   Updated: 2023/12/21 18:22:22 by sandrfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strlen(const char *s)
 {
