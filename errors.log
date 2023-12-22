@@ -1,0 +1,150 @@
+Errors in memcpy: /Users/sandrfer/francinette/temp/libft/war-machine/tests/Part1_functions/ft_memcpy
+Test 1:
+    if (mem != ft_memcpy(mem, "zyxwvutsrqponmlkjihgfedcba", 14))
+        write(1, "dest's adress was not returned\n", 31);
+    write(1, mem, 30);
+Expected (cat -e test01.output):
+zyxwvutsrqponmjjjjjjjjjjjjjjjj
+Your result (cat -e user_output_test01):
+jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+Test 3:
+    if (mem != ft_memcpy(mem, "zy\0xw\0vu\0\0tsr", 11))
+        write(1, "dest's adress was not returned\n", 31);
+    write(1, mem, 30);
+Expected (cat -e test03.output):
+zy^@xw^@vu^@^@tjjjjjjjjjjjjjjjjjjj
+Your result (cat -e user_output_test03):
+jjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+Errors in strchr: /Users/sandrfer/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strchr
+Test 5:
+    if (!(str = ft_strchr(str2, '\0')))
+        ft_print_result("NULL");
+    else
+    {
+        ft_print_result(str);
+        if (str != str2 + 7)
+            ft_print_result("\nReturn value is false");
+    }
+Expected (cat -e test05.output):
+
+Your result (cat -e user_output_test05):
+NULL
+Test 6:
+    char    str3[] = "";
+    if (!(str = ft_strchr(str3, '\0')))
+        ft_print_result("NULL");
+    else
+    {
+        ft_print_result(str);
+        if (str != str3)
+            ft_print_result("\nReturn value is false");
+    }
+Expected (cat -e test06.output):
+
+Your result (cat -e user_output_test06):
+NULL
+Errors in strrchr: /Users/sandrfer/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strrchr
+Test 5:
+    if (!(str = ft_strrchr(str2, 's')))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test05.output):
+NULL
+Your result (cat -e user_output_test05):
+
+Test 8:
+    if (!(str = ft_strrchr(str2 + 2, 'b')))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test08.output):
+NULL
+Your result (cat -e user_output_test08):
+
+Errors in strncmp: /Users/sandrfer/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strncmp
+Test 8:
+    ft_print_result(ft_strncmp("abcdefgh", "abcdwxyz", 4));
+Expected (cat -e test08.output):
+0
+Your result (cat -e user_output_test08):
+-1
+Test 11:
+    ft_print_result(ft_strncmp("test\200", "test\0", 6));
+Expected (cat -e test11.output):
+1
+Your result (cat -e user_output_test11):
+-1
+Errors in strnstr: /Users/sandrfer/francinette/temp/libft/war-machine/tests/Part1_functions/ft_strnstr
+Test 1:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "lorem", 15)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test01.output):
+lorem ipsum dolor sit amet
+Your result (cat -e user_output_test01):
+
+Test 2:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "ipsum", 15)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test02.output):
+ipsum dolor sit amet
+Your result (cat -e user_output_test02):
+
+Test 3:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit lorem ipsum dolor", "ipsum", 35)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test03.output):
+ipsum dolor sit lorem ipsum dolor
+Your result (cat -e user_output_test03):
+
+Test 5:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "ipsumm", 30)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test05.output):
+NULL
+Your result (cat -e user_output_test05):
+
+Test 6:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "dol", 30)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test06.output):
+dolor sit amet
+Your result (cat -e user_output_test06):
+
+Test 7:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "consectetur", 30)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test07.output):
+NULL
+Your result (cat -e user_output_test07):
+
+Test 8:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "sit", 10)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test08.output):
+NULL
+Your result (cat -e user_output_test08):
+
+Test 9:
+    if (!(str = ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15)))
+        ft_print_result("NULL");
+    else
+        ft_print_result(str);
+Expected (cat -e test09.output):
+NULL
+Your result (cat -e user_output_test09):
+

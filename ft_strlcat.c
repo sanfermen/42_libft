@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sandrfer <sandrfer@student.42.f>           +#+  +:+       +#+        */
+/*   By: sandrfer <sandrfer@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 19:08:43 by sandrfer          #+#    #+#             */
-/*   Updated: 2023/12/19 16:27:39 by sandrfer         ###   ########.fr       */
+/*   Updated: 2023/12/22 10:09:22 by sandrfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		return (dstsize + src_len);
 	if (dstsize > dst_len + 1)
 	{
-		while (dst_len + 1 + i < dstsize && src != '\0')
+		while (dst_len + 1 + i < dstsize && src[i] != '\0')
 		{
 			dst[dst_len + i] = src[i];
 			i++;
