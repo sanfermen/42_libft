@@ -6,7 +6,7 @@
 /*   By: sandrfer <sandrfer@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:37:21 by sandrfer          #+#    #+#             */
-/*   Updated: 2023/12/21 18:21:28 by sandrfer         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:31:48 by sandrfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	i = 0;
 	if (dst == NULL && src == NULL)
-		return (0);
-	while (i > n)
+		return (NULL);
+	while (i < n)
 	{
 		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 		i++;
