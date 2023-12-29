@@ -6,7 +6,7 @@
 /*   By: sandrfer <sandrfer@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:48:30 by sandrfer          #+#    #+#             */
-/*   Updated: 2023/12/23 19:48:00 by sandrfer         ###   ########.fr       */
+/*   Updated: 2023/12/28 08:31:36 by sandrfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
+	char	*ptr;
+	int		len;
 
+	ptr = (char *)s;
 	len = ft_strlen(s);
 	while (len > 0)
 	{
-		if (s[len] == c)
-			return ((char *)&s[len]);
+		if (ptr[len - 1] == (char)c)
+			return (ptr + len - 1);
 		len--;
 	}
-	if (s[0] == c)
-		return ((char *)&s[0]);
-	return (NULL);
+	if (s[0] == (char)c)
+		return (ptr);
+	return (0);
 }
