@@ -6,13 +6,13 @@
 /*   By: sandrfer <sandrfer@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:32:34 by sandrfer          #+#    #+#             */
-/*   Updated: 2024/01/09 16:31:59 by sandrfer         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:53:31 by sandrfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static int	ft_countwords(char const *s, char c)
 {
 	int	count;
 
@@ -31,40 +31,52 @@ static int	count_words(char const *s, char c)
 	return (count);
 }
 
-static char	*extract_word(const char *s, char c)
+static size_t	ft_numchar(const char *s, char c)
 {
-	int		len;
-	char	*word;
+	size_t	n;
 
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	word = ft_substr(s, 0, len);
-	return (word);
+	n = 0;
+	while (s[n] != c && s[n] != '\0')
+	{
+		n++;
+	}
+	return (n);
+}
+
+static char	**ft_free(const char **str, size_t len)
+{
+	while (len--)
+	{
+		free((void *)str[len]);
+	}
+	free(str);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
-	int		word_count;
-	int		i;
+	char	**str;
+	size_t	i;
+	size_t	len;
 
+	i = 0;
 	if (!s)
 		return (NULL);
-	word_count = count_words(s, c);
-	result = (char **)malloc((word_count + 1) * sizeof(char *));
-	if (!result)
+	len = ft_countwords(s, c);
+	str = (char **)malloc((len + 1) * sizeof(char *));
+	if (!str)
 		return (NULL);
-	i = 0;
-	while (*s)
+	while (i < len)
 	{
 		while (*s == c)
 			s++;
-		if (*s)
-			result[i++] = extract_word(s, c);
-		while (*s && *s != c)
-			s++;
+		str[i] = (char *)malloc((ft_numchar(s, c) + 1) * sizeof(char));
+		if (!str[i])
+			return (ft_free((const char **)str, i));
+		ft_strlcpy(str[i], s, (ft_numchar(s, c) + 1));
+		s = ft_strchr(s, (int)c);
+		i++;
 	}
-	result[i] = NULL;
-	return (result);
+	str[i] = 0;
+	return (str);
 }
