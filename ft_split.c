@@ -6,56 +6,65 @@
 /*   By: sandrfer <sandrfer@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:32:34 by sandrfer          #+#    #+#             */
-/*   Updated: 2024/01/08 18:49:30 by sandrfer         ###   ########.fr       */
+/*   Updated: 2024/01/09 16:31:59 by sandrfer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_countwords(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
-	if (!*s)
-		return (0);
-	while (*s)
-	{
-		if (*s == c)
-			s++;
-		count++;
-		while (*s != c && *s)
-			s++;
-	}
-	return (count);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**end;
-	size_t	word_len;
-	int		i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	end = (char **)malloc((ft_countwords(s, c) + 1) * sizeof(char *));
-	if (!end)
-		return (NULL);
 	while (*s)
 	{
 		while (*s == c)
 			s++;
 		if (*s)
 		{
-			if (!ft_strchr(s, c))
-				word_len = ft_strlen(s);
-			else
-				word_len = ft_strchr(s, c) - s;
-			end[i++] = ft_substr(s, 0, word_len);
-			s += word_len;
+			count++;
+			while (*s && *s != c)
+				s++;
 		}
 	}
-	end[i] = NULL;
-	return (end);
+	return (count);
+}
+
+static char	*extract_word(const char *s, char c)
+{
+	int		len;
+	char	*word;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	word = ft_substr(s, 0, len);
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**result;
+	int		word_count;
+	int		i;
+
+	if (!s)
+		return (NULL);
+	word_count = count_words(s, c);
+	result = (char **)malloc((word_count + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+			result[i++] = extract_word(s, c);
+		while (*s && *s != c)
+			s++;
+	}
+	result[i] = NULL;
+	return (result);
 }
